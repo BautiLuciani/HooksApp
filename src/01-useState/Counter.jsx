@@ -1,0 +1,42 @@
+import React, { useState } from 'react'
+
+const Counter = () => {
+
+    /*const [counter, setcounter] = useState({
+        counter1: 10,
+        counter2: 20,
+        counter3: 30
+    })*/
+
+    // Para no tener que andar haciendo counter.counter1/2/3 podemos desestructurarlo desde el useSate de la siguiente manera:
+    /*const [{counter1, counter2, counter3}, setCounter] = useState({
+        counter1: 10,
+        counter2: 20,
+        counter3: 30
+    })*/
+
+    // El ejemplo de arriba esta bien, pero es mejor hacerlo de la siguiente manera:
+    // De esta manera es mas facil podes exparsir y acceder a todas las propiedades
+    const [state, setCounter] = useState({
+        counter1: 10,
+        counter2: 20,
+        counter3: 30,
+    });
+
+    const {counter1, counter2, counter3} = state;
+
+  return (
+    <>
+        <h1>Counter1: {counter1}</h1>
+        <h1>Counter2: {counter2}</h1>
+        <h1>Counter3: {counter3}</h1>
+
+        <hr />
+
+        {/* btn es una clase predeterminada de Bootstrap para darle estilo a los botones*/}
+        <button className='btn' onClick={()=> setCounter({...state, counter1: counter1 + 1,})}>+1</button>
+    </>
+  )
+}
+
+export default Counter
